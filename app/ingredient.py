@@ -1,5 +1,9 @@
 class Ingredient:
-    def __init__(self, name: str = None, unitNumber: int = None, unitName: str = None):
+    """An ingredient object"""
+    def __init__(self, name: str = None, unitVolume: int = None, unitType: str = None):
         self.name = name
-        self.unitNumber = unitNumber
-        self.unitName = unitName
+        self.unitNumber = unitVolume
+        self.unitType = unitType
+
+    def __str__(self):
+        return f"({self.unitNumber} {self.unitType}) {self.name}"
