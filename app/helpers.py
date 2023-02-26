@@ -1,6 +1,17 @@
 from measurement.measures import Weight
 from measurement.utils import guess
+from ingredient import *
+import os
 
+ingredients = []
+
+storageFile = './storage.csv'
+if not os.path.isfile(storageFile):
+    open(storageFile,'x')
+
+recipeFile = './recipes.csv'
+if not os.path.isfile(recipeFile):
+    open(recipeFile,'x')
 
 def createWeightObject(quantity: int = None, type: str = None) -> Weight:
     weightTypes = ['attogram', 'centigram', 'decagram', 'decigram', 'exagram', 'femtogram', 'gigagram', 'gram', 'hectogram', 'kilogram', 'long ton', 'mcg', 'megagram', 'metric ton', 'metric tonne', 'microgram', 'milligram', 'nanogram', 'ounce', 'petagram', 'picogram', 'pound', 'short ton', 'teragram', 'ton', 'yoctogram', 'yottagram', 'zeptogram', 'zetagram']
@@ -18,3 +29,14 @@ def createWeightObject(quantity: int = None, type: str = None) -> Weight:
             weight.value = weight.value + quantity
 
             return weight   
+
+def storeIngredients():
+        ingredientName = input("Ingredient name: ")
+        ingredientUnitType = input("Unit type: ")
+        ingredientQuantity = int(input("Quantity: "))
+
+        weight = createWeightObject(ingredientQuantity, ingredientUnitType)
+        ingredient = Ingredient(ingredientName, weight.value, weight.unit)
+        print(f"{ingredient} added to storage")
+
+        ingredients.append(ingredient)
