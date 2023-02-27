@@ -21,4 +21,4 @@ if __name__ == '__main__':
 
     for ingredient in ingredients:
         print(ingredient)
-        file.write(f"{ingredient}")
+        file.write(f"{ingredient}\n")

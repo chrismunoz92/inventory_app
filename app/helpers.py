@@ -5,14 +5,6 @@ import os
 
 ingredients = []
 
-storageFile = './storage.csv'
-if not os.path.isfile(storageFile):
-    open(storageFile,'x')
-
-recipeFile = './recipes.csv'
-if not os.path.isfile(recipeFile):
-    open(recipeFile,'x')
-
 def createWeightObject(quantity: int = None, type: str = None) -> Weight:
     weightTypes = ['attogram', 'centigram', 'decagram', 'decigram', 'exagram', 'femtogram', 'gigagram', 'gram', 'hectogram', 'kilogram', 'long ton', 'mcg', 'megagram', 'metric ton', 'metric tonne', 'microgram', 'milligram', 'nanogram', 'ounce', 'petagram', 'picogram', 'pound', 'short ton', 'teragram', 'ton', 'yoctogram', 'yottagram', 'zeptogram', 'zetagram']
     
@@ -37,6 +29,5 @@ def storeIngredients():
 
         weight = createWeightObject(ingredientQuantity, ingredientUnitType)
         ingredient = Ingredient(ingredientName, weight.value, weight.unit)
-        print(f"{ingredient} added to storage")
 
         ingredients.append(ingredient)
